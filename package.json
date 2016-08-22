@@ -1,0 +1,29 @@
+{
+  "name": "heritage",
+  "version": "0.0.1",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Auzarius/heritage.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Auzarius/heritage/issues"
+  },
+  "homepage": "https://github.com/Auzarius/heritage#readme",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "graceful-fs": "^4.1.6",
+    "jsonwebtoken": "^7.1.9",
+    "lodash": "^4.15.0",
+    "minimatch": "^3.0.3",
+    "mysql": "^2.11.1",
+    "node-bcrypt": "0.0.1"
+  }
+}

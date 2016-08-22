@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Heritage Cred | v0.1</title>
+
+	<!-- FOR ANGULAR ROUTING -->
+	<base href="/">
+    <meta name="viewport" content="width=device-width">
+	<!-- CSS  -->
+	<link rel="stylesheet" href="lib/css/bootswatch.paper.min.css" />
+	<link rel="stylesheet" href="dist/css/main.min.css" />
+
+	<!-- JS -->
+	<script src="lib/js/angular.min.js"></script>
+	<script src="lib/js/angular-route.min.js"></script>
+	<script src="lib/js/angular-animate.min.js"></script>
+	<script src="dist/js/comet.node.min.js"></script>
+	<script src="lib/js/moment.min.js"></script>
+	<script src="lib/js/angular-moment.min.js"></script>
+</head>
+<body ng-app="comet" ng-controller="mainController as main">
+
+<!-- NAVBAR -->
+<header>
+	<div class="navbar navbar-inverse" ng-show="main.loggedIn" role='navigation'>
+		<div class="container">
+			<button type='button' class='navbar-toggle navbar-left pull-left' data-toggle='collapse' data-target='.navbar-collapse'>
+				<span class='sr-only'>Toggle Navigation</span>
+				<span class='icon-bar'></span>
+				<span class='icon-bar'></span>
+				<span class='icon-bar'></span>
+			</button>
+			
+			<div class="navbar-header">
+				<a href="/" class="navbar-brand" rel='home' style='margin-top: -4px;'>
+					<span class='node-comet'> Heritage</span>
+					<span class='node-header'>.Cred</span>
+				</a>
+			</div>	
+			<ul class='nav navbar-nav navbar-left collapse navbar-collapse'>
+				<li><a href="/tickets"><span class="glyphicon glyphicon-edit"></span> Misc</a></li>				
+			</ul>
+			<ul class="nav navbar-nav navbar-right visible-sm visible-md visible-lg">
+				
+				<li ng-if="!main.loggedIn"><a href="/login">Login</a></li>
+				<li ng-if="main.loggedIn" class='dropdown'>
+					<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button">
+						<i class="glyphicon glyphicon-user"></i><span ng-cloak>&nbsp;&nbsp;{{ main.user.firstName }}&nbsp;</span><i class='caret'></i>
+					</a>
+					<ul class="dropdown-menu pull-right">
+						<li>
+							<a href="/profile" ng-href="/profile">
+								<i class="glyphicon glyphicon-cog"></i> Profile
+							</a>
+						</li>
+						<li>
+							<a href="#" ng-click="main.doLogout()">
+								<i class="glyphicon glyphicon-minus"></i> 
+								Logout
+							</a>
+						</li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+	</div>
+</header>
+
+<ul class="visible-xs fixed-ucp">
+	<li ng-if="main.loggedIn" class='dropdown fixed-ucp'>
+		<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button">
+			<i class="glyphicon glyphicon-user"></i><span ng-cloak>&nbsp;&nbsp;{{ main.user.firstName }}&nbsp;</span><i class='caret'></i>
+		</a>
+		<ul class="dropdown-menu pull-right">
+			<li>
+				<a href="/profile" ng-href="/profile">
+					<i class="glyphicon glyphicon-cog"></i> Profile
+				</a>
+			</li>
+			<li>
+				<a href="#" ng-click="main.doLogout()">
+					<i class="glyphicon glyphicon-minus"></i> 
+					Logout
+				</a>
+			</li>
+		</ul>
+	</li>
+</ul>
+<div class='clearfix'></div>	
+			
+<main class='container'>
+	<!-- ANGULAR VIEWS -->
+	<div ng-view></div>
+</main>
+
+<footer class='footer no-print' ng-if="main.loggedIn">
+	<div class='container'>
+		<div class='row'>
+			<div class='col-md-4 col-xs-6'>
+				<h4>Author</h4>
+				<ul class='list-unstyled'>
+					<li><strong>Anthony Gillespie</strong></li>
+					<li><a href="mailto:anthony.gillespie@heritagefoodservice.com">anthony.gillespie@heritagefoodservice.com</a></li>
+					<li><a href="https://github.com/Auzarius">GitHub</a></li>
+				</ul>
+			</div>
+			<div class='col-md-4 col-xs-6'>
+				<h4>Navigation</h4>
+				<ul class='list-unstyled'>
+					<li><a href='/'>Home</a></li>
+					<li><a href='/profile'>Profile</a></li>
+				</ul>
+			</div>
+			<div class='col-md-4 col-sm-12 col-xs-12'>
+				<h4>About</h4>
+				<p>This site is currently in development.</p>
+			</div>
+		</div>
+	</div>
+</footer>
+
+<!-- jquery and bootstrap -->
+<script src="lib/js/jquery.min.js"></script>
+<script src="lib/js/bootstrap.min.js"></script>
+<!-- collapse navbar when a link is clicked -->
+<script>
+	$(function () {
+		$(".navbar-nav li a").on('click', function(event) {
+			$(".navbar-collapse").collapse('hide');
+  		});
+	});
+</script>
+</body>
+</html>
