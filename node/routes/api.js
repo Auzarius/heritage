@@ -16,6 +16,34 @@ module.exports = function (app, express, mySql) {
 			message : 'Please see /api/authenticate to get an access token'
 		});
 	});
+
+	apiRouter.get('/passgen', function(req, res) {
+		res.json({
+			message: 'Please pass a password you would like to have hashed to: /api/passgen/:password where :password is your password.'
+		});
+	});
+
+	apiRouter.route('/passgen/:password')
+		.get(function (req, res) {
+			console.log("Password: " + req.params.password);
+			
+			if (req.params.password) {
+				mySql.bcrypt.hash(req.params.password, 10, function(err, hash) {
+					if (err) {
+						throw new Error(err);
+					} else {
+						res.json({
+							hashed_password: hash
+						});
+					}					
+				});
+			} else {
+				res.json({
+					message: 'Something went wrong when trying to hash your password.'
+				});
+			}
+			
+		});
 	
 	//authentication route
 	apiRouter.route('/authenticate')

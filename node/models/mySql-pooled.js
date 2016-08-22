@@ -1,5 +1,5 @@
 var node_mysql 		= require('mysql'),
-	bcrypt  		= require('bcrypt-nodejs'),
+	bcrypt  		= require('bcrypt'),
 	Connection;
 
 module.exports = function(config) {

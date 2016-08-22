@@ -23,7 +23,9 @@
     "jsonwebtoken": "^7.1.9",
     "lodash": "^4.15.0",
     "minimatch": "^3.0.3",
-    "mysql": "^2.11.1",
-    "node-bcrypt": "0.0.1"
+    "mysql": "^2.11.1"
+  },
+  "devDependencies": {
+    "morgan": "^1.7.0"
   }
 }
